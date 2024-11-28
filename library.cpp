@@ -7,7 +7,6 @@ using namespace std;
 
 enum class Genre { fiction, nonfiction, periodical, biography, children };
 
-// Book Class
 class Book {
 private:
     string ISBN;
@@ -18,7 +17,6 @@ private:
     Genre genre;
 
 public:
-    // Constructor
     Book(string isbn, string t, string a, int date, Genre g) {
         ISBN = isbn;
         title = t;
@@ -45,7 +43,6 @@ public:
     }
 };
 
-// Patron Class
 class Patron {
 private:
     string user_name;
@@ -53,7 +50,6 @@ private:
     int owed_fees;
 
 public:
-    // Constructor
     Patron(string name, string card, int fees = 0) {
         user_name = name;
         card_number = card;
@@ -69,7 +65,6 @@ public:
     bool owes_fees() const { return owed_fees > 0; }
 };
 
-// Library Class
 class Library {
 private:
     vector<Book> books;
@@ -114,11 +109,10 @@ public:
 int main() {
     Library library;
 
-    // Add initial books and patrons
     library.add_book(Book("123-456-789", "C++ Primer", "Stanley Lippman", 2013, Genre::nonfiction));
     library.add_book(Book("987-654-321", "Harry Potter", "J.K. Rowling", 1997, Genre::fiction));
-    library.add_patron(Patron("Alice", "001"));
-    library.add_patron(Patron("Bob", "002", 10));
+    library.add_patron(Patron("Kevia", "223"));
+    library.add_patron(Patron("Gad", "224", 10));
 
     string choice;
     while (true) {
