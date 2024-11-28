@@ -7,6 +7,22 @@ using namespace std;
 
 enum class Genre { fiction, nonfiction, periodical, biography, children };
 
+string get_genre_to_string(Genre g){
+    switch(g){
+        case Genre::fiction:
+        return "Fiction";
+        case Genre::nonfiction:
+        return "nonfiction";
+        case Genre::periodical:
+        return "periodical";
+        case Genre::biography:
+        return "biography";
+        case Genre::children:
+        return "children";
+        default:
+        return "Genre not found";
+    }
+}
 class Book {
 private:
     string ISBN;
@@ -37,8 +53,8 @@ public:
     void check_in() { checked_out = false; }
 
     friend ostream &operator<<(ostream &os, const Book &b) {
-        os << "Title: " << b.title << "\nAuthor: " << b.author
-           << "\nISBN: " << b.ISBN << "\nGenre: " << static_cast<int>(b.genre) << "\n";
+        os << "\n\nTitle: " << b.title << "\nAuthor: " << b.author
+           << "\nISBN: " << b.ISBN << "\nGenre: " << get_genre_to_string(b.genre) << "\n\n";
         return os;
     }
 };
@@ -95,6 +111,10 @@ public:
         book_it->check_in();
         return true;
     }
+    void display(){
+        for(auto w:books)
+        cout<<w;
+    }
 
     vector<string> patrons_with_fees() const {
         vector<string> result;
@@ -117,6 +137,7 @@ int main() {
     string choice;
     while (true) {
         cout << "\nLibrary Menu:\n";
+        cout <<"0. List all books\n";
         cout << "1. Add a Book\n";
         cout << "2. Check Out Book\n";
         cout << "3. Check In Book\n";
@@ -126,6 +147,10 @@ int main() {
         cin >> choice;
 
         switch (stoi(choice)) {
+            case 0:{
+                library.display();
+                break;
+            }
             case 1: {
                 string isbn, title, author;
                 int year, genre_choice;
