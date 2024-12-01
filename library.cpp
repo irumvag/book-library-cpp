@@ -195,7 +195,7 @@ int main() {
                 if (library.check_in_book(isbn))
                     cout << "Book checked in successfully.\n";
                 else
-                    cout << "Failed to check in book. Ensure the book is checked out.\n";
+                    cout << "Failed to check in book. Ensure the book is checked out. \n";
                 break;
             }
             case 4: {
