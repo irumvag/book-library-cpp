@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -145,7 +146,7 @@ int main() {
         cout << "5. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
-
+        system("clear");
         switch (stoi(choice)) {
             case 0:{
                 library.display();
